@@ -1,0 +1,45 @@
+// Given 2 string parameters, show a concatenation of:
+//
+// the reverse of the 2nd string with inverted case; e.g Fish -> HSIf
+// a separator in between both strings: @@@
+// the 1st string reversed with inverted case and then mirrored; e.g Water -> RETAwwATER
+
+function reverseAndMirror(s1,s2) {
+
+  var changeCase = function(str) {
+    var newString = '';
+    var letter;
+    for (var i = 0; i < str.length; i++) {
+      if (str[i] === str[i].toUpperCase()){
+        letter = str[i].toLowerCase();
+        newString = newString + letter;
+        }else if (str[i] === str[i].toLowerCase()) {
+        letter = str[i].toUpperCase();
+        newString = newString + letter;
+      };
+    };
+    return newString;
+  };
+
+  var reverse = function(str) {
+    var newString = '';
+    var letter;
+    for (var i = 0; i < str.length; i++) {
+      letter = str[i];
+      newString = letter + newString;
+    };
+    return newString;
+  };
+
+  var changeAndReverse = function(str) {
+    var result = changeCase(str);
+    result = reverse(result);
+    return result;
+  }
+
+  var firstString = changeAndReverse(s1);
+  var changeCaseFirstString = changeCase(s1);
+  var secondString = changeAndReverse(s2);
+  var result = `${secondString}@@@${firstString}${changeCaseFirstString}`;
+  return result;
+};
