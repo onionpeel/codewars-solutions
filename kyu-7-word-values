@@ -1,0 +1,27 @@
+function wordValue(array) {
+  var alphabetString = String.fromCharCode(...[...Array(26)].map(_ => i++, i = 97));
+  var alphabetObject = {};
+
+  var letter;
+  for (var i = 0; i < alphabetString.length; i++) {
+    letter = alphabetString.charAt(i);
+    alphabetObject[letter] = i + 1;
+  };
+
+  var newArray =[];
+  for (var i = 0; i < array.length; i++) {
+    var string = array[i];
+    var regex = /\s/g;
+    var newString = string.replace(regex, "");
+
+    var result = 0;
+    for (var j = 0; j < newString.length; j++) {
+      var letter = newString.charAt(j);
+      var valueOfLetter = alphabetObject[letter];
+      result = result + valueOfLetter;
+    };
+    result = result * (i + 1);
+    newArray.push(result);
+  };
+  return newArray;
+};
