@@ -1,0 +1,29 @@
+function checkThreeAndTwo(array) {
+
+  var array2 = ['a','b','c'];
+
+  var letterCheck = function(array1) {
+    for (var i = 0; i < array2.length; i++) {
+      var array3 = [];
+      for(var j = 0; j < array1.length; j++) {
+        if(array2[i] != array1[j]) {
+          array3.push(array1[j]);
+        };
+      };
+      if (array3.length === 2) {
+        return array3;
+      };
+    };
+    return false;
+  };
+
+  var result = letterCheck(array);
+  if (result === false) {
+    return false;
+  };
+  if (result[0] != result[1]) {
+    return false;
+  }else {
+    return true;
+  };
+};
