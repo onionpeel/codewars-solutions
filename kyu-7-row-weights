@@ -18,15 +18,12 @@ function rowWeights(array){
       odd.push(array[i]);
     };
   };
-
-  var odd1 = odd.reduce((accumulator, current) => {
+  var method = (accumulator, current) => {
     return accumulator + current;
-  });
+  };
 
-  var even1 = even.reduce((accumulator, current) => {
-    return accumulator + current;
-  });
+  var odd1 = odd.reduce(method);
+  var even1 = even.reduce(method);
 
   return [even1, odd1];
-
 };
