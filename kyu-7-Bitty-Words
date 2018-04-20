@@ -1,0 +1,34 @@
+// Your friend has given you a secret message nested inside a block of text. She provided you the key to her code as a number and now you must decode the message.
+// The number, in binary, represents on/off flags for each word of the phrase. The bit order, overlayed on the array of words, will give which words to include in the phrase.
+// Example:
+// bittyWords('Long live the king', 11)
+// Convert to binary: 11 = 0b1011
+// Apply binary to words list:
+// ['Long', 'live', 'the', 'king']
+//     1       0      1       1
+// result: 'Long the king'
+
+function bittyWords(word, bits) {
+  var binary = Number(bits).toString(2);
+  var words = word.split(' ');
+
+  if (binary.length != words.length) {
+    var difference = words.length - binary.length;
+    for (var i = 0; i < difference; i++) {
+      binary = 0 + binary;
+    };
+  };
+
+  var compareValues = function(array, string) {
+    var newString = '';
+    for (var i = 0; i < array.length; i++) {
+      if (string.charAt(i) === "1") {
+        newString = newString + " " + array[i];
+      };
+    };
+    newString = newString.slice(1);
+    return newString;
+  };
+  var result = compareValues(words, binary);
+  return result;
+};
