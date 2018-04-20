@@ -1,0 +1,32 @@
+// Given an array of positive integers (the weights of the people), return a new array/tuple of two integers, where the first one is the total weight of team 1, and the second one is the total weight of team 2.
+// Array size is at least 1.
+// All numbers will be positive.
+// Input >> Output Examples
+// rowWeights([13, 27, 49])  ==>  return (62, 27)
+// rowWeights([50, 60, 70, 80])  ==>  return (120, 140)
+
+function rowWeights(array){
+  var even = [];
+  var odd = [];
+  if (array.length === 1) {
+    odd = [0];
+  };
+  for (var i = 0; i < array.length; i++) {
+    if (i % 2 === 0) {
+      even.push(array[i]);
+    } else {
+      odd.push(array[i]);
+    };
+  };
+
+  var odd1 = odd.reduce((accumulator, current) => {
+    return accumulator + current;
+  });
+
+  var even1 = even.reduce((accumulator, current) => {
+    return accumulator + current;
+  });
+
+  return [even1, odd1];
+
+};
